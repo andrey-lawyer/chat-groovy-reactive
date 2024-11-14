@@ -1,0 +1,97 @@
+//at first - 1 terminal
+//  ./gradlew -t :bootJar
+//then  - 2 terminal
+//  ./gradlew bootRun
+
+//./gradlew test
+
+//docker-compose up -d
+
+plugins {
+	id 'groovy'
+	id 'org.springframework.boot' version '3.3.4'
+	id 'io.spring.dependency-management' version '1.1.6'
+}
+
+group = 'com'
+version = '0.0.1-SNAPSHOT'
+
+java {
+	toolchain {
+		languageVersion = JavaLanguageVersion.of(21)
+	}
+}
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	// Spring WebFlux and Reactive Web support
+	implementation 'org.springframework.boot:spring-boot-starter-webflux' // For building reactive web applications
+
+	implementation 'com.fasterxml.jackson.core:jackson-databind'
+
+	// Spring Web for traditional REST endpoints (if needed alongside WebFlux)
+    //	implementation 'org.springframework.boot:spring-boot-starter-web' // Provides support for traditional synchronous web requests
+
+	// MongoDB for reactive database interactions
+	implementation 'org.springframework.boot:spring-boot-starter-data-mongodb-reactive' // Reactive MongoDB support
+
+	// Redis for session management and caching
+	implementation 'org.springframework.boot:spring-boot-starter-data-redis-reactive' // Reactive Redis support for caching and session management
+
+	implementation 'org.springframework.session:spring-session-data-redis'
+
+	// Spring Security for authentication and authorization
+	implementation 'org.springframework.boot:spring-boot-starter-security' // Provides authentication and authorization support
+
+	implementation 'org.springframework.security:spring-security-messaging'
+
+	implementation 'org.springframework.boot:spring-boot-starter-rsocket'
+
+
+
+
+	// Validation support
+	implementation 'org.springframework.boot:spring-boot-starter-validation' // For validating data inputs, such as form fields
+
+	// Groovy language support
+	implementation 'org.apache.groovy:groovy' // For using Groovy as the programming language
+
+	// Lombok for reducing boilerplate code
+	compileOnly 'org.projectlombok:lombok' // Compile-time annotations like @Getter, @Setter
+	annotationProcessor 'org.projectlombok:lombok'
+
+	// Development tools
+	developmentOnly 'org.springframework.boot:spring-boot-devtools' // Hot reloading and development utilities
+
+	// Testing dependencies
+	testImplementation 'org.spockframework:spock-core:2.3-groovy-4.0'// версия может изменяться
+
+	// Spring Boot тестирование
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testImplementation 'org.testcontainers:testcontainers:1.17.6'
+	testImplementation 'org.testcontainers:mongodb:1.17.3'
+	testImplementation 'org.testcontainers:junit-jupiter:1.17.6'
+
+
+	testImplementation 'io.projectreactor:reactor-test' // For testing reactive components
+	testImplementation 'org.springframework.security:spring-security-test' // For testing security components
+	testRuntimeOnly 'org.junit.platform:junit-platform-launcher' // JUnit platform launcher for running tests
+}
+
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
+
+tasks.withType(JavaCompile).configureEach {
+	options.compilerArgs += ['-parameters']
+}
