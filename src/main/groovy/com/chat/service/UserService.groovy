@@ -1,9 +1,10 @@
 package com.chat.service
 
-
 import com.chat.dto.auth.UserCurrentResponseDto
 import com.chat.model.User
 import com.chat.repository.UserRepository
+//import org.slf4j.Logger
+//import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.security.core.Authentication
 import org.springframework.security.core.userdetails.UserDetails
@@ -18,6 +19,7 @@ class UserService {
 
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
+//    private static final Logger logger = LoggerFactory.getLogger(UserService.class);
 
        @Autowired
        UserService(UserRepository userRepository) {

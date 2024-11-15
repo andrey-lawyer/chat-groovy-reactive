@@ -4,6 +4,7 @@
 //  ./gradlew bootRun
 
 //./gradlew test
+//./gradlew dependencies
 
 //docker-compose up -d
 
@@ -34,57 +35,50 @@ repositories {
 
 dependencies {
 	// Spring WebFlux and Reactive Web support
-	implementation 'org.springframework.boot:spring-boot-starter-webflux' // For building reactive web applications
-
-	implementation 'com.fasterxml.jackson.core:jackson-databind'
-
-	// Spring Web for traditional REST endpoints (if needed alongside WebFlux)
-    //	implementation 'org.springframework.boot:spring-boot-starter-web' // Provides support for traditional synchronous web requests
+	implementation 'org.springframework.boot:spring-boot-starter-webflux:3.3.4' // For building reactive web applications/
 
 	// MongoDB for reactive database interactions
-	implementation 'org.springframework.boot:spring-boot-starter-data-mongodb-reactive' // Reactive MongoDB support
+	implementation 'org.springframework.boot:spring-boot-starter-data-mongodb-reactive:3.3.4' // Reactive MongoDB support
 
 	// Redis for session management and caching
-	implementation 'org.springframework.boot:spring-boot-starter-data-redis-reactive' // Reactive Redis support for caching and session management
+	implementation 'org.springframework.boot:spring-boot-starter-data-redis-reactive:3.3.4' // Reactive Redis support for caching and session management
 
-	implementation 'org.springframework.session:spring-session-data-redis'
+	implementation 'org.springframework.session:spring-session-data-redis:3.3.2'
 
 	// Spring Security for authentication and authorization
-	implementation 'org.springframework.boot:spring-boot-starter-security' // Provides authentication and authorization support
+	implementation 'org.springframework.boot:spring-boot-starter-security:3.3.4' // Provides authentication and authorization support
 
-	implementation 'org.springframework.security:spring-security-messaging'
+	implementation 'org.springframework.security:spring-security-messaging:6.3.3'
 
-	implementation 'org.springframework.boot:spring-boot-starter-rsocket'
-
-
+	implementation 'org.springframework.boot:spring-boot-starter-rsocket:3.3.4'
 
 
 	// Validation support
-	implementation 'org.springframework.boot:spring-boot-starter-validation' // For validating data inputs, such as form fields
+	implementation 'org.springframework.boot:spring-boot-starter-validation:3.3.4' // For validating data inputs, such as form fields
 
 	// Groovy language support
-	implementation 'org.apache.groovy:groovy' // For using Groovy as the programming language
+	implementation 'org.apache.groovy:groovy:4.0.23' // For using Groovy as the programming language
 
 	// Lombok for reducing boilerplate code
-	compileOnly 'org.projectlombok:lombok' // Compile-time annotations like @Getter, @Setter
-	annotationProcessor 'org.projectlombok:lombok'
+	compileOnly 'org.projectlombok:lombok:1.18.34' // Compile-time annotations like @Getter, @Setter
+	annotationProcessor 'org.projectlombok:lombok:1.18.34'
 
 	// Development tools
-	developmentOnly 'org.springframework.boot:spring-boot-devtools' // Hot reloading and development utilities
+	developmentOnly 'org.springframework.boot:spring-boot-devtools:3.3.4' // Hot reloading and development utilities
 
 	// Testing dependencies
 	testImplementation 'org.spockframework:spock-core:2.3-groovy-4.0'// версия может изменяться
 
 	// Spring Boot тестирование
-	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test:3.3.4'
 	testImplementation 'org.testcontainers:testcontainers:1.17.6'
 	testImplementation 'org.testcontainers:mongodb:1.17.3'
 	testImplementation 'org.testcontainers:junit-jupiter:1.17.6'
 
 
-	testImplementation 'io.projectreactor:reactor-test' // For testing reactive components
-	testImplementation 'org.springframework.security:spring-security-test' // For testing security components
-	testRuntimeOnly 'org.junit.platform:junit-platform-launcher' // JUnit platform launcher for running tests
+	testImplementation 'io.projectreactor:reactor-test:3.6.10' // For testing reactive components
+	testImplementation 'org.springframework.security:spring-security-test:6.3.3' // For testing security components
+	testRuntimeOnly 'org.junit.platform:junit-platform-launcher:1.10.3' // JUnit platform launcher for running tests
 }
 
 

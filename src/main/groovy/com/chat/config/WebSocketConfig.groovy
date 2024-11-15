@@ -17,7 +17,7 @@ class WebSocketConfig implements WebFluxConfigurer {
     HandlerMapping webSocketMapping(ChatWebSocketHandler chatWebSocketHandler) {
         SimpleUrlHandlerMapping mapping = new SimpleUrlHandlerMapping()
         mapping.setUrlMap([ "/api/ws/chat": chatWebSocketHandler ])
-        mapping.setOrder(10)
+//        mapping.setOrder(10)
         return mapping
     }
 }
